@@ -1,0 +1,19 @@
+{
+  "source_file": "england_covid_hospital_2020-08-01_to_2021-04-06.csv",
+  "source_page": "https://www.england.nhs.uk/statistics/statistical-work-areas/covid-19-hospital-activity/",
+  "period_start": "2020-08-01",
+  "period_end": "2021-04-06",
+  "peak_daily_admissions_and_diagnoses": 4134,
+  "peak_admissions_date": "2021-01-12",
+  "peak_occupied_beds": 34336,
+  "peak_occupancy_date": "2021-01-18",
+  "peak_lag_days": 6,
+  "final_14_day_mean_occupancy": 3196.8571428571427,
+  "peak_to_final14_mean_ratio": 10.74054875323979,
+  "training_period": "2020-08-07 to 2020-11-30 (7-day means)",
+  "validation_period": "2020-12-01 to 2021-04-06 (7-day means)",
+  "effective_turnover_rate_per_day": 0.09840945383875882,
+  "effective_turnover_time_days": 10.16162534179361,
+  "validation_R2_occupancy_level": 0.9883476401411609,
+  "validation_RMSE_beds": 1026.5888223429693
+}
