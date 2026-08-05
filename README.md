@@ -48,4 +48,13 @@ The code is released under the MIT License. The processed NHS England data remai
 
 ## Citation
 
-A permanent archived release and DOI will be added through Zenodo. Until then, cite the associated manuscript and the tagged GitHub release used for your analysis.
+Ibrahim, M., Alhassan B., Ibrahim S., Ibrahim S. (2026). *Hospital-Overload Bifurcations:
+Reproducible Code and Data for a Capacity-Limited
+Piecewise-Smooth Epidemic Model* (Version 1.0.0).
+Zenodo. https://doi.org/10.5281/zenodo.21807502
+
+## Archived release
+
+Version 1.0.0 is permanently archived in Zenodo:
+
+**DOI:** [10.5281/zenodo.21807502](https://doi.org/10.5281/zenodo.21807502)
