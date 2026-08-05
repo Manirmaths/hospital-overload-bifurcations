@@ -28,9 +28,9 @@ The archived branch files used in the manuscript are:
 
 - `unstable_branch_hopf.json` and `unstable_branch_hopf_tail.json`: unstable periodic branch issuing from the subcritical Hopf point;
 - `stable_branch_down.json` and `stable_branch_up.json`: attracting periodic branch;
-- `qmax_branch.json`: upper return branch and upper fold;
+- `qmax_branch_parts/qmax_branch_01.json` through `qmax_branch_04.json`: partitioned upper return branch and upper-fold data, loaded automatically by `make_nd_figures.py`;
 - `fold_refine.json`: lower-fold refinement;
-- `global_bifurcation_summary.json`: principal numerical landmarks.
+- `results/global_bifurcation_summary.json`: principal numerical landmarks.
 
 The periodic branch was computed by single shooting with variational equations and Floquet multipliers. Overlapping continuation parameterisations are implemented in `fixed_b_cycle.py`, `amplitude_custom.py`, and `qmax_continuation.py`; `explore_continuation.py` constructs a small-amplitude Hopf seed.
 
