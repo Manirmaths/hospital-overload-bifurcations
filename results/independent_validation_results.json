@@ -1,0 +1,26 @@
+{
+  "independent_validator": "Suleiman Ibrahim",
+  "implementation": "independent SymPy/mpmath derivatives plus fixed-step RK4",
+  "R0": 3.1286618232950554,
+  "bcrit": 0.0010256571258926393,
+  "bH": 0.00023215520815067958,
+  "bH_over_bcrit": 0.22634777479718932,
+  "omegaH": 0.03629528805261386,
+  "transversality_dReLambda_db": 20.75160743741054,
+  "first_lyapunov_coefficient": 42.441786282055,
+  "hopf_type_under_standard_Kuznetsov_convention": "subcritical",
+  "cycle": {
+    "integration_method": "fixed-step classical RK4",
+    "dt": 0.05,
+    "t_end": 12000.0,
+    "b_cycle": 0.0005128285629463197,
+    "b_cycle_over_bcrit": 0.5,
+    "period": 247.60000000000014,
+    "capacity_limited_fraction": 0.2944264943457189,
+    "switching_crossings_per_period": 2,
+    "q_min": 4.2239477733877303e-07,
+    "q_max": 0.013018195371738154,
+    "h_min": 1.198461903831117e-06,
+    "h_max": 0.0004558476115078395
+  }
+}
