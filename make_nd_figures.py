@@ -7,11 +7,16 @@ from verify_revision import P0, R0_value, normal_equilibrium, transient_threshol
 OUT=Path(__file__).resolve().parent
 
 def load(name): return json.load(open(OUT/name))
+def load_parts(pattern):
+    data=[]
+    for path in sorted(OUT.glob(pattern)):
+        data.extend(json.load(open(path)))
+    return data
 # periodic branches
 uh=load('unstable_branch_hopf.json')+load('unstable_branch_hopf_tail.json')
 sd=load('stable_branch_down.json')
 su=load('stable_branch_up.json')
-qm=load('qmax_branch.json')
+qm=load_parts('qmax_branch_parts/qmax_branch_*.json')
 # dedupe/sort plotting segments individually
 fig,axs=plt.subplots(1,2,figsize=(10.8,4.3))
 ax=axs[0]
