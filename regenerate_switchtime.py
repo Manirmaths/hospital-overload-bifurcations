@@ -7,7 +7,7 @@ from verify_revision import P0, I0, normal_equilibrium, transient_threshold, fir
 
 OUT = Path(__file__).resolve().parent
 _, bcrit = normal_equilibrium()
-btrans, _, sol = transient_threshold(P0, 160.0)
+btrans, _, sol = transient_threshold(P0)
 a, c = P0[4], P0[5]
 
 def pressure(t):

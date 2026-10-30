@@ -1,19 +1,131 @@
 {
   "source_file": "england_covid_hospital_2020-08-01_to_2021-04-06.csv",
   "source_page": "https://www.england.nhs.uk/statistics/statistical-work-areas/covid-19-hospital-activity/",
-  "period_start": "2020-08-01",
-  "period_end": "2021-04-06",
-  "peak_daily_admissions_and_diagnoses": 4134,
-  "peak_admissions_date": "2021-01-12",
-  "peak_occupied_beds": 34336,
-  "peak_occupancy_date": "2021-01-18",
-  "peak_lag_days": 6,
-  "final_14_day_mean_occupancy": 3196.8571428571427,
-  "peak_to_final14_mean_ratio": 10.74054875323979,
-  "training_period": "2020-08-07 to 2020-11-30 (7-day means)",
-  "validation_period": "2020-12-01 to 2021-04-06 (7-day means)",
-  "effective_turnover_rate_per_day": 0.09840945383875882,
-  "effective_turnover_time_days": 10.16162534179361,
-  "validation_R2_occupancy_level": 0.9883476401411609,
-  "validation_RMSE_beds": 1026.5888223429693
+  "n_training_transitions": 115,
+  "training_rule": "transitions t->t+1 with t+1 <= 2020-11-30 (trailing 7-day means)",
+  "validation": "recursion initialised at observed 2020-12-01 value; 2020-12-01 to 2021-04-06",
+  "gamma_hat": 0.09844404514816989,
+  "gamma_hat_v100_rule": 0.09840945383875882,
+  "turnover_days": 10.15805474566676,
+  "gamma_se_ols": 0.0004465251300062763,
+  "gamma_se_hac7": 0.0008844113334136518,
+  "gamma_ci95_ols": [
+    0.09756885589335759,
+    0.09931923440298218
+  ],
+  "gamma_ci95_hac": [
+    0.09671059893467913,
+    0.10017749136166064
+  ],
+  "gamma_ci95_block_bootstrap": [
+    0.09728028764345847,
+    0.11041660650062769
+  ],
+  "turnover_days_ci95_bootstrap": [
+    9.05660870853077,
+    10.279574867881717
+  ],
+  "gamma_fitted_on_validation_period": 0.10218466151525432,
+  "training_residual_ljungbox": {
+    "lb_stat": {
+      "7": 176.55100089116013,
+      "14": 264.12353843585026
+    },
+    "lb_pvalue": {
+      "7": 1.0418239348422927e-34,
+      "14": 3.4171571987838934e-48
+    }
+  },
+  "validation_R2": 0.9884608738611557,
+  "validation_RMSE": 1021.5886224088199,
+  "validation_MAE": 844.0641097739585,
+  "validation_band_from_gamma_ci": {
+    "R2_low": 0.9721438201494867,
+    "R2_high": 0.9840116285475132
+  },
+  "validation_one_step": {
+    "mean": -57.11086824416612,
+    "sd": 104.89449417594857,
+    "acf1": 0.8891882966784194,
+    "acf7": 0.6672037832180909,
+    "ljungbox": {
+      "lb_stat": {
+        "7": 582.0314594397842,
+        "14": 919.44503938076
+      },
+      "lb_pvalue": {
+        "7": 1.8006255229916164e-121,
+        "14": 2.9402313730401436e-187
+      }
+    }
+  },
+  "benchmarks": {
+    "persistence_H": [
+      -0.14262407288273682,
+      10165.79322638333
+    ],
+    "window_sum": {
+      "L": 22,
+      "beta": 0.45813250746083073,
+      "r2_rmse": [
+        0.9662263526476679,
+        1747.7470157636783
+      ]
+    },
+    "distributed_lag_21": [
+      0.9772276933313571,
+      1435.1361327826871
+    ]
+  },
+  "prospective": {
+    "h7": {
+      "stock_flow": [
+        0.9730733410571434,
+        1597.464854683387
+      ],
+      "persistence": [
+        0.8786824921026805,
+        3390.797213743088
+      ],
+      "mae_stock_flow": 1359.2898553865152,
+      "mae_persistence": 2958.460714285714
+    },
+    "h14": {
+      "stock_flow": [
+        0.7955365919364208,
+        4512.764304814569
+      ],
+      "persistence": [
+        0.5399000019253981,
+        6769.56822528851
+      ],
+      "mae_stock_flow": 3942.2460185805567,
+      "mae_persistence": 6073.586599241466
+    }
+  },
+  "rolling_gamma_28d_range": [
+    0.09310983327133528,
+    0.135080844337087
+  ],
+  "peaks": {
+    "raw": {
+      "admissions": "2021-01-12",
+      "occupancy": "2021-01-18",
+      "lag_days": 6
+    },
+    "trailing7_end_labelled": {
+      "admissions": "2021-01-12",
+      "occupancy": "2021-01-22",
+      "lag_days": 10
+    },
+    "centred7": {
+      "admissions": "2021-01-09",
+      "occupancy": "2021-01-19",
+      "lag_days": 10
+    }
+  },
+  "peak_raw_admissions": 4134,
+  "peak_raw_occupancy": 34336,
+  "final14_mean_occupancy": 3196.8571428571427,
+  "peak_to_final14": 10.74054875323979
 }

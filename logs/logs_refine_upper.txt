@@ -1,0 +1,13 @@
+upper tol=1e-05 ds=0.01 b_fold=2.09249542e-03 interior=True nodes=2547 psi=[-4.105e-03,2.662e-03] fracC=0.224 min|dPsi|=0.00015625077356613566
+upper tol=1e-06 ds=0.01 b_fold=2.09249542e-03 interior=True nodes=2623 psi=[-4.105e-03,2.662e-03] fracC=0.224 min|dPsi|=0.00015625077353756983
+upper tol=1e-06 ds=0.005 b_fold=2.09249547e-03 interior=True nodes=2628 psi=[-4.104e-03,2.657e-03] fracC=0.224 min|dPsi|=0.00015612268047570906
+Traceback (most recent call last):
+  File "/home/claude/rev/code/collocation_refine_fold.py", line 92, in <module>
+    main(sys.argv[1])
+    ~~~~^^^^^^^^^^^^^
+  File "/home/claude/rev/code/collocation_refine_fold.py", line 82, in main
+    r = refine(start, tol, ds, n, direction)
+  File "/home/claude/rev/code/collocation_refine_fold.py", line 37, in refine
+    assert sol.success, sol.message
+           ^^^^^^^^^^^
+AssertionError: The maximum number of mesh nodes is exceeded.

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Reproduce the principal numerical checks and figures for the revised manuscript.
+"""Reproduce the principal numerical checks and figures (release 1.1.0).
 
-Dependencies: numpy, scipy, matplotlib. JAX is used only for the first Lyapunov
-coefficient; the remaining computations do not require it.
+Dependencies: see requirements.txt (numpy, scipy, matplotlib, sympy, mpmath,
+statsmodels, jax[cpu]). JAX is used for the first Lyapunov coefficient.
 """
 from __future__ import annotations
 
@@ -158,7 +158,10 @@ def normal_trajectory(p=P0, t_end=500.0, rtol=1e-12, atol=1e-15):
                      dense_output=True, max_step=0.1)
 
 
-def transient_threshold(p=P0, t_end=160.0):
+def transient_threshold_v100(p=P0, t_end=160.0):
+    """v1.0.0 implementation, retained ONLY to document the reviewer-identified
+    defect: the maximum was searched on tau in [0, 100] only, which violates
+    Theorem 7.1 near R0 = 1.  Do not use for results."""
     a, c = p[4], p[5]
     sol = normal_trajectory(p, t_end=t_end, rtol=3e-10, atol=1e-13)
     ts = np.linspace(0.0, min(100.0, t_end), 1201)
@@ -171,6 +174,18 @@ def transient_threshold(p=P0, t_end=160.0):
                           bounds=(lo, hi), method="bounded",
                           options={"xatol": 1e-12})
     return -opt.fun, opt.x, sol
+
+
+def transient_threshold(p=P0, t_end=None, y0=None):
+    """b_trans = sup_{tau>=0} P(tau), computed with the certified infinite-horizon
+    search of thresholds.py (v1.1.0).  Returns (b_trans, tau_star, solution).
+    ``t_end`` is accepted for backward compatibility and ignored: the horizon
+    is chosen adaptively until the tail certificate holds.  The ordering
+    b_trans >= b_crit (Theorem 7.1) is asserted."""
+    from thresholds import transient_threshold_certified, check_threshold_ordering
+    r = transient_threshold_certified(p, y0=Y0 if y0 is None else y0)
+    check_threshold_ordering(r)
+    return r.btrans, r.tau_star, r.sol
 
 
 def first_lyapunov_coefficient(yH, bH):
@@ -282,7 +297,7 @@ def first_root(func, level, t_end=100.0):
 def make_outputs():
     R0 = R0_value()
     yN, bcrit = normal_equilibrium()
-    btrans, tstar, solN = transient_threshold(P0, 500.0)
+    btrans, tstar, solN = transient_threshold(P0)
     a, c = P0[4], P0[5]
 
     def pressure(t):
@@ -404,7 +419,7 @@ def make_outputs():
     def thresholds(p):
         R = R0_value(p)
         y, bc = normal_equilibrium(p)
-        bt, _, _ = transient_threshold(p, 160.0)
+        bt, _, _ = transient_threshold(p)
         return np.array([R, bc, bt])
 
     hrel = 1e-4
@@ -441,7 +456,7 @@ def make_outputs():
         Rvals[j] = R0_value(p)
         if Rvals[j] > 1.0:
             _, bcvals[j] = normal_equilibrium(p)
-            btvals[j], _, _ = transient_threshold(p, 160.0)
+            btvals[j], _, _ = transient_threshold(p)
     fig, ax = plt.subplots(figsize=(5.4, 4.2))
     ax.plot(Bvals, bcvals, label=r"$b=b_{\rm crit}$")
     ax.plot(Bvals, btvals, label=r"$b=b_{\rm trans}$")

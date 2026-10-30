@@ -1,0 +1,44 @@
+   1 b=4.98728895e-04 T=247.5667 ampq=1.30421e-02 psi=[-9.95e-04,9.02e-03] ncross=2 nodes=4325 ds=0.02
+   2 b=4.87253703e-04 T=247.5289 ampq=1.30609e-02 psi=[-9.72e-04,9.03e-03] ncross=2 nodes=4371 ds=0.026
+   3 b=4.72652344e-04 T=247.4680 ampq=1.30832e-02 psi=[-9.43e-04,9.05e-03] ncross=2 nodes=4423 ds=0.0338
+   4 b=4.54202818e-04 T=247.3689 ampq=1.31088e-02 psi=[-9.06e-04,9.08e-03] ncross=2 nodes=4478 ds=0.0439
+   5 b=4.31110576e-04 T=247.2067 ampq=1.31363e-02 psi=[-8.59e-04,9.10e-03] ncross=2 nodes=4546 ds=0.0571
+   6 b=4.02577082e-04 T=246.9399 ampq=1.31625e-02 psi=[-8.02e-04,9.12e-03] ncross=2 nodes=4619 ds=0.0743
+   7 b=3.67935614e-04 T=246.5000 ampq=1.31804e-02 psi=[-7.33e-04,9.14e-03] ncross=2 nodes=4972 ds=0.0965
+   8 b=3.26882508e-04 T=245.7731 ampq=1.31768e-02 psi=[-6.50e-04,9.15e-03] ncross=2 nodes=5208 ds=0.125
+   9 b=2.79816199e-04 T=244.5689 ampq=1.31274e-02 psi=[-5.55e-04,9.13e-03] ncross=2 nodes=4233 ds=0.163
+  10 b=2.30917949e-04 T=242.6916 ampq=1.29985e-02 psi=[-4.56e-04,9.05e-03] ncross=2 nodes=9840 ds=0.2
+  11 b=1.90521764e-04 T=240.3534 ampq=1.27925e-02 psi=[-3.74e-04,8.91e-03] ncross=2 nodes=8337 ds=0.2
+  12 b=1.57407411e-04 T=237.5005 ampq=1.25030e-02 psi=[-3.05e-04,8.72e-03] ncross=2 nodes=12333 ds=0.2
+  13 b=1.30513149e-04 T=234.0148 ampq=1.21134e-02 psi=[-2.47e-04,8.45e-03] ncross=2 nodes=14649 ds=0.2
+  14 b=1.09091264e-04 T=229.6457 ampq=1.15862e-02 psi=[-1.96e-04,8.09e-03] ncross=2 nodes=24795 ds=0.2
+  15 b=9.31628768e-05 T=223.8053 ampq=1.08284e-02 psi=[-1.48e-04,7.56e-03] ncross=2 nodes=25929 ds=0.2
+  16 b=8.62963929e-05 T=215.1054 ampq=9.60116e-03 psi=[-8.70e-05,6.71e-03] ncross=2 nodes=42331 ds=0.2
+/home/claude/rev/code/collocation_folds.py:54: RuntimeWarning: overflow encountered in exp
+  Y = np.exp(U)
+/home/claude/rev/code/collocation_folds.py:46: RuntimeWarning: invalid value encountered in divide
+  inc = B * s * (i + theta * q) / n
+/home/claude/rev/code/collocation_folds.py:55: RuntimeWarning: divide by zero encountered in divide
+  return f_vec(Y, b) / Y
+/home/claude/rev/code/collocation_folds.py:55: RuntimeWarning: invalid value encountered in divide
+  return f_vec(Y, b) / Y
+  turning point bracketed near b=8.62963929e-05
+  17 b=9.45291721e-05 T=206.8916 ampq=8.36561e-03 psi=[-2.22e-05,5.85e-03] ncross=2 nodes=30531 ds=0.2
+  18 b=1.07012658e-04 T=201.6466 ampq=7.58819e-03 psi=[6.81e-06,5.32e-03] ncross=0 nodes=15436 ds=0.2
+  19 b=1.20482952e-04 T=197.0552 ampq=6.88191e-03 psi=[2.52e-05,4.84e-03] ncross=0 nodes=8757 ds=0.2
+  20 b=1.34586325e-04 T=192.8619 ampq=6.19479e-03 psi=[5.10e-05,4.39e-03] ncross=0 nodes=4867 ds=0.2
+  21 b=1.48961791e-04 T=189.0859 ampq=5.52764e-03 psi=[8.57e-05,3.96e-03] ncross=0 nodes=4867 ds=0.2
+  22 b=1.63190717e-04 T=185.7393 ampq=4.88125e-03 psi=[1.31e-04,3.55e-03] ncross=0 nodes=4867 ds=0.2
+  23 b=1.76826034e-04 T=182.8275 ampq=4.25682e-03 psi=[1.88e-04,3.17e-03] ncross=0 nodes=4867 ds=0.2
+  24 b=1.89444001e-04 T=180.3468 ampq=3.65555e-03 psi=[2.57e-04,2.82e-03] ncross=0 nodes=4867 ds=0.2
+  25 b=2.00691218e-04 T=178.2835 ampq=3.07831e-03 psi=[3.39e-04,2.49e-03] ncross=0 nodes=4867 ds=0.2
+  26 b=2.10314645e-04 T=176.6151 ampq=2.52542e-03 psi=[4.34e-04,2.20e-03] ncross=0 nodes=4867 ds=0.2
+  27 b=2.18170287e-04 T=175.3127 ampq=1.99661e-03 psi=[5.41e-04,1.94e-03] ncross=0 nodes=4867 ds=0.2
+  28 b=2.24214191e-04 T=174.3443 ampq=1.49108e-03 psi=[6.59e-04,1.70e-03] ncross=0 nodes=4867 ds=0.2
+  29 b=2.28483289e-04 T=173.6767 ampq=1.00768e-03 psi=[7.87e-04,1.49e-03] ncross=0 nodes=4867 ds=0.2
+  30 b=2.31073184e-04 T=173.2781 ampq=5.44989e-04 psi=[9.24e-04,1.31e-03] ncross=0 nodes=4867 ds=0.2
+  31 b=2.32117559e-04 T=173.1187 ampq=1.01509e-04 psi=[1.07e-03,1.14e-03] ncross=0 nodes=9733 ds=0.2
+  turning point bracketed near b=2.32117559e-04
+  32 b=2.31771352e-04 T=173.1715 ampq=3.24283e-04 psi=[9.95e-04,1.22e-03] ncross=0 nodes=4894 ds=0.2
+FOLD 8.628314060081581e-05 0.009652755086354194
+FOLD 0.00023215586859739722 -1.2399755889712403e-06
