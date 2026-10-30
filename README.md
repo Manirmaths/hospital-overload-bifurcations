@@ -13,7 +13,7 @@ correction to the transient-threshold search and other changes.
 
 | Version | Use | DOI |
 |---|---|---|
-| 1.1.0 | revised manuscript | **10.5281/zenodo.NEWVERSION** (version DOI) |
+| 1.1.0 | revised manuscript | **10.5281/zenodo.21807873** (version DOI) |
 | 1.0.0 | original submission | 10.5281/zenodo.21807502 |
 
 ## Environment
@@ -83,4 +83,4 @@ The code is released under the MIT License. The processed NHS England data remai
 
 Ibrahim, M., Alhassan, B., Ibrahim, S., Ibrahim, S. (2026). *Hospital-Overload Bifurcations:
 Reproducible Code and Data for a Capacity-Limited Piecewise-Smooth Epidemic Model*
-(Version 1.1.0). Zenodo. https://doi.org/10.5281/zenodo.NEWVERSION
+(Version 1.1.0). Zenodo. https://doi.org/10.5281/zenodo.21807873
