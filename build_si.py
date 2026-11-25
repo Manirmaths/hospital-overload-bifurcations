@@ -108,8 +108,8 @@ def main():
     if _nx:
         TAILSI += (rf"The actual tail deviation $\sup_{{T_{{\rm stop}}\le\tau\le T_{{\rm ext}}}}|\mathcal P-\bcrit|$ "
                    rf"exceeded the inflated linearised bound at {_nx} of the {len(tv)} points (largest ratio ${_br:.1f}$), "
-                   rf"so the bound is not reliable as a certificate; the tail deviation nevertheless stayed below "
-                   rf"${100*_gm:.0f}\%$ of $\btrans-\bcrit$ at every point, and the maximum itself was unchanged.")
+                   rf"so the bound cannot be relied on; even so, the tail deviation stayed below "
+                   rf"${100*_gm:.0f}\%$ of $\btrans-\bcrit$ at every point.")
     else:
         TAILSI += (rf"The actual tail deviation never exceeded the inflated linearised bound "
                    rf"(largest ratio ${_br:.3f}$) and stayed below ${100*_gm:.0f}\%$ of $\btrans-\bcrit$.")
@@ -179,11 +179,11 @@ the bound is effective despite the slow rate $m$. Integration stops when
 $\|\delta(T)\|<10^{-2}\|\mathcal E_N^*\|$ and
 $B_T(1+10\|\delta(T)\|/\|\mathcal E_N^*\|)<\tfrac12(\max\mathcal P-\bcrit)$,
 where the factor $1+10\|\delta\|/\|\mathcal E_N^*\|$ is a heuristic safety
-allowance for the nonlinear remainder. It is not derived from a bound on the
-remainder, so the stopping rule is a numerical criterion and not a rigorous
-certificate. If the criterion fails by the maximum horizon the routine raises
-an error rather than return a value. The ordering $\btrans\ge\bcrit$ is then
-asserted.
+allowance for the nonlinear remainder. It is not derived from an estimate of
+the remainder, so the stopping rule is a numerical criterion and does not
+prove that no later maximum exists. If the criterion is not met by the maximum
+horizon, the routine stops with an error and returns no value. The ordering
+$\btrans\ge\bcrit$ is then asserted.
 
 \paragraph{Horizon-extension check.} Independently of the stopping rule, every
 atlas point was re-integrated to $T_{\rm ext}=\max(8T_{\rm stop},2\times10^4)$
@@ -413,8 +413,8 @@ Grid: $31\times31$ in $(q,h)\in[0,0.01625]\times[0,0.999b]$.
 \section{Behaviour near the invasion threshold}\label{si:near}
 Table~\ref{tab:si-near} gives $\btrans/\bcrit$ for $R_0$ close to $1$ with the
 seed held fixed (\texttt{near\_threshold\_ratio.py}). A ratio of $1.000$ means
-that $\mathcal P$ approaches $\bcrit$ from below without a finite-time
-overshoot, so the supremum is the limit $\bcrit$ and is not attained.
+that $\mathcal P$ approaches $\bcrit$ from below without overshooting it, so
+the supremum $\bcrit$ is reached only in the limit.
 
 \begin{table}[h]\centering\small
 \caption{$\btrans/\bcrit$ near $R_0=1$ for two fixed seeds.}\label{tab:si-near}
