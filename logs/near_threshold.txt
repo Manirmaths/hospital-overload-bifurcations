@@ -1,0 +1,16 @@
+seed=1e-06 R0-1=3.00e-05 bcrit=4.734e-08 btrans=2.435e-07 ratio=5.144 tau*=109 T=25600
+seed=1e-06 R0-1=1.00e-04 bcrit=1.578e-07 btrans=2.451e-07 ratio=1.553 tau*=518 T=25600
+seed=1e-06 R0-1=3.00e-04 bcrit=4.733e-07 btrans=4.733e-07 ratio=1.000 tau*=204775 T=204800
+seed=1e-06 R0-1=1.00e-03 bcrit=1.576e-06 btrans=1.576e-06 ratio=1.000 tau*=89305 T=102400
+seed=1e-06 R0-1=3.00e-03 bcrit=4.719e-06 btrans=4.836e-06 ratio=1.025 tau*=5601 T=12800
+seed=1e-06 R0-1=1.00e-02 bcrit=1.561e-05 btrans=2.319e-05 ratio=1.485 tau*=1898 T=3200
+seed=1e-06 R0-1=3.00e-02 bcrit=4.587e-05 btrans=1.394e-04 ratio=3.039 tau*=804 T=1600
+seed=1e-06 R0-1=1.00e-01 bcrit=1.426e-04 btrans=1.173e-03 ratio=8.227 tau*=313 T=1600
+seed=1e-08 R0-1=3.00e-05 bcrit=4.734e-08 btrans=4.734e-08 ratio=1.000 tau*=3148527 T=3276800
+seed=1e-08 R0-1=1.00e-04 bcrit=1.578e-07 btrans=1.578e-07 ratio=1.000 tau*=819167 T=819200
+seed=1e-08 R0-1=3.00e-04 bcrit=4.733e-07 btrans=4.733e-07 ratio=1.000 tau*=386330 T=409600
+seed=1e-08 R0-1=1.00e-03 bcrit=1.576e-06 btrans=1.576e-06 ratio=1.000 tau*=95318 T=102400
+seed=1e-08 R0-1=3.00e-03 bcrit=4.719e-06 btrans=4.836e-06 ratio=1.025 tau*=10333 T=12800
+seed=1e-08 R0-1=1.00e-02 bcrit=1.561e-05 btrans=2.318e-05 ratio=1.484 tau*=3308 T=6400
+seed=1e-08 R0-1=3.00e-02 bcrit=4.587e-05 btrans=1.393e-04 ratio=3.038 tau*=1275 T=3200
+seed=1e-08 R0-1=1.00e-01 bcrit=1.426e-04 btrans=1.173e-03 ratio=8.227 tau*=456 T=3200
