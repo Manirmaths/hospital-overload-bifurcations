@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.1.1 (second-round revision, November 2026)
+
+- `thresholds.py`: the tail test is documented as a numerical stopping
+  criterion (linearised bound with a heuristic nonlinear allowance), not a
+  rigorous certificate. Maximum integration step now scales with the horizon
+  so that very long horizons near R0 = 1 are feasible.
+- New `tail_validation.py`: independent horizon-extension check (8x the
+  stopping horizon, rtol 1e-12) for every atlas point; it also records where
+  the linearised tail bound fails.
+- New `near_threshold_ratio.py`: b_trans/b_crit for R0 - 1 down to 3e-5 with
+  fixed seeds; the ratio passes through 1 and then diverges as R0 -> 1.
+- `verify_revision.py` writes its legacy v1.0 figures to
+  `results/legacy_fig_*_v100.pdf`, so it can no longer overwrite the revised
+  `fig_grazing.pdf`, `fig_switchtime.pdf` and `fig_sensitivity.pdf`
+  (the 1.1.0 archive contained the overwritten one-panel versions).
+- Figure 7b gains a near-threshold inset; SI Table S5 column renamed
+  ("switches": entry and exit of one episode); new SI Section S9.
+
 ## 1.1.0 (revision for Scientific Reports, October 2026)
 
 ### Corrected

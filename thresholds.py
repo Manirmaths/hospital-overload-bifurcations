@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Certified computation of the transient capacity threshold b_trans.
+"""Infinite-horizon computation of the transient capacity threshold b_trans.
 
 Revision 1.1.0 replacement for ``transient_threshold`` in verify_revision.py.
 
-Definition (manuscript Eq. 25):  b_trans = sup_{tau >= 0} P(tau),
+Definition (manuscript Eq. 29):  b_trans = sup_{tau >= 0} P(tau),
 P(tau) = h_N(tau) + (a/c) q_N(tau) along the normal-care trajectory.
 
 Version 1.0.0 searched only tau in [0, 100].  This module searches the whole
@@ -13,16 +13,21 @@ half-line by
 2. locating every interior local maximum of P on a fine grid and refining each
    with a bounded scalar optimiser (the global maximum is the largest of them,
    or P(0) if larger);
-3. stopping only when a *tail certificate* holds: the trajectory is inside a
+3. stopping only when a *tail criterion* holds: the trajectory is inside a
    small neighbourhood of the normal-care equilibrium E_N, and the
    linearised modal bound
        |P(tau) - b_crit| <= sum_k |w^T v_k| |u_k^T (y(T) - E_N)|,  tau >= T,
    (v_k, u_k right/left eigenvectors of J_N, Re lambda_k < 0) plus a
-   quadratic safety allowance is smaller than (max_found - b_crit) / 2.
-   Then no later time can exceed the maximum already found.
+   heuristic safety allowance for the nonlinear remainder is smaller than
+   (max_found - b_crit) / 2.
+
+The bound in step 3 is exact only for the linearisation and the allowance is
+not derived from a remainder estimate, so step 3 is a numerical stopping
+criterion, not a rigorous proof that no later maximum exists.
+tail_validation.py provides an independent horizon-extension check.
 
 The returned diagnostics record the horizon, number of local maxima examined,
-the certificate margin and the theorem check b_trans >= b_crit (Theorem 7.1).
+the tail-bound margin and the theorem check b_trans >= b_crit (Theorem 7.1).
 """
 from __future__ import annotations
 
@@ -74,7 +79,7 @@ def transient_threshold_certified(p=P0, y0=Y0, rtol=1e-10, atol=1e-14,
     """Return a TransientResult for b_trans = sup_{tau>=0} P(tau).
 
     Raises RuntimeError if R0 <= 1 (no endemic normal-care equilibrium) or
-    if the tail certificate cannot be obtained before T_max.
+    if the tail criterion is not met before T_max.
     """
     p = np.asarray(p, dtype=float)
     a, c = p[4], p[5]
@@ -93,7 +98,7 @@ def transient_threshold_certified(p=P0, y0=Y0, rtol=1e-10, atol=1e-14,
     while True:
         sol = solve_ivp(lambda t, y: rhs_normal(t, y, p), (0.0, T), y0,
                         method="DOP853", rtol=rtol, atol=atol,
-                        dense_output=True, max_step=1.0)
+                        dense_output=True, max_step=max(1.0, T / 2.0e4))
         if not sol.success:
             raise RuntimeError(sol.message)
         dtT = max(dt, T / 1.0e5)
@@ -107,7 +112,7 @@ def transient_threshold_certified(p=P0, y0=Y0, rtol=1e-10, atol=1e-14,
             cands.append((float(-opt.fun), float(opt.x)))
         cands.append((float(Pv[0]), 0.0))
         best = max(cands)
-        # tail certificate at the end of the current horizon
+        # tail criterion at the end of the current horizon
         y_end = sol.y[:, -1]
         rel = np.linalg.norm(y_end - yN) / np.linalg.norm(yN)
         tb = _tail_bound(y_end, yN, JN, w)
@@ -118,7 +123,7 @@ def transient_threshold_certified(p=P0, y0=Y0, rtol=1e-10, atol=1e-14,
             break
         T *= 2.0
     if not certified:
-        raise RuntimeError(f"tail certificate failed up to T={T}")
+        raise RuntimeError(f"tail criterion not met up to T={T}")
     cands.sort(reverse=True)
     return TransientResult(btrans=best[0], tau_star=best[1], bcrit=float(bcrit),
                            horizon=float(T), n_local_maxima=len(idx), certified=True,

@@ -384,7 +384,7 @@ def make_outputs():
     ax[1].set_title("(b) admission-deficit compensation")
     ax[1].legend(fontsize=8)
     fig.tight_layout()
-    fig.savefig(OUT / "fig_grazing.pdf", bbox_inches="tight")
+    fig.savefig(OUT / "results" / "legacy_fig_grazing_v100.pdf", bbox_inches="tight")
     plt.close(fig)
 
     B, m, eta, pi, a, c, chiQ, chiH, rhoI, rhoQ, rhoH, theta = unpack(P0)
@@ -413,7 +413,7 @@ def make_outputs():
     ax2.semilogx(bvals, 100.0 * relerr, linestyle=":", label="relative gap")
     ax2.set_ylabel("bound gap (%)")
     fig.tight_layout()
-    fig.savefig(OUT / "fig_switchtime.pdf", bbox_inches="tight")
+    fig.savefig(OUT / "results" / "legacy_fig_switchtime_v100.pdf", bbox_inches="tight")
     plt.close(fig)
 
     def thresholds(p):
@@ -444,7 +444,7 @@ def make_outputs():
     ax.set_ylabel(r"elasticity $\partial\ln Y/\partial\ln X$")
     ax.legend(ncol=3, fontsize=8)
     fig.tight_layout()
-    fig.savefig(OUT / "fig_sensitivity.pdf", bbox_inches="tight")
+    fig.savefig(OUT / "results" / "legacy_fig_sensitivity_v100.pdf", bbox_inches="tight")
     plt.close(fig)
 
     Bvals = np.linspace(0.6, 6.0, 65)
@@ -469,7 +469,7 @@ def make_outputs():
     ax.set_ylim(bottom=0.0)
     ax.legend(fontsize=8)
     fig.tight_layout()
-    fig.savefig(OUT / "fig_regime.pdf", bbox_inches="tight")
+    fig.savefig(OUT / "results" / "legacy_fig_regime_v100.pdf", bbox_inches="tight")
     plt.close(fig)
 
     results = {

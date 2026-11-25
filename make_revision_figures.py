@@ -186,7 +186,7 @@ def fig_atlas():
     bH = np.array([r["bH"][0] if r["bH"] else np.nan for r in rows])
     fig, ax = plt.subplots(1, 2, figsize=(11.2, 4.6))
     a = ax[0]
-    a.plot(B, bt, lw=1.8, label=r"$b_{\rm trans}$ (certified)")
+    a.plot(B, bt, lw=1.8, label=r"$b_{\rm trans}$")
     a.plot(B, old, ":", lw=1.2, color="0.4", label=r"$b_{\rm trans}$, v1.0 search on $\tau\leq100$ (erroneous)")
     a.plot(B, bc, lw=1.8, label=r"$b_{\rm crit}$")
     a.plot(B, bH, "--", lw=1.6, label=r"$b_H$ (subcritical Hopf)")
@@ -214,8 +214,21 @@ def fig_atlas():
     a.axhline(1, ls=":", color="k", lw=0.8)
     a.axvline(d["B_invasion"], ls=":", lw=1, color="k")
     a.set_xlabel(r"transmission parameter $\mathcal{B}$"); a.set_ylabel(r"$b_{\rm trans}/b_{\rm crit}$")
-    a.set_title("(b) threshold separation and initial-condition dependence"); a.legend(fontsize=6.5)
+    a.set_title("(b) threshold separation and initial-condition dependence"); a.legend(fontsize=6.5, loc="lower right")
     a.set_xlim(0.9, 6.05)
+    try:
+        nt = [x for x in load("near_threshold_ratio.json") if "ratio" in x]
+        ins = a.inset_axes([0.08, 0.52, 0.42, 0.42])
+        for sd, mk in [(1e-6, "o-"), (1e-8, "s--")]:
+            xs = [x for x in nt if x["seed"] == sd]
+            ins.plot([x["R0_minus_1"] for x in xs], [x["ratio"] for x in xs], mk, ms=3, lw=1,
+                     label=f"$i(0)=10^{{{int(np.log10(sd))}}}$")
+        ins.set_xscale("log"); ins.set_yscale("log"); ins.axhline(1, ls=":", color="k", lw=0.7)
+        ins.set_xlabel(r"$R_0-1$", fontsize=7); ins.set_ylabel(r"$b_{\rm trans}/b_{\rm crit}$", fontsize=7)
+        ins.tick_params(labelsize=6); ins.legend(fontsize=5.5)
+        ins.set_title("near the invasion threshold", fontsize=6.5)
+    except FileNotFoundError:
+        pass
     fig.tight_layout(); fig.savefig(ROOT / "fig_bifurcation_atlas.pdf", bbox_inches="tight"); plt.close(fig)
 
 

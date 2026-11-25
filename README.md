@@ -5,7 +5,7 @@ Reproducible code, processed data, and numerical outputs supporting the manuscri
 > **Hopf bifurcation, bistability and transient grazing in a piecewise-smooth hospital-overload model**
 > (Scientific Reports, submission dc51fde4-f058-437c-a595-414061012e0d, revision 1)
 
-**Release 1.1.0** is the frozen version associated with the revised manuscript.
+**Release 1.1.1** is the frozen version associated with the second-round revision. Release 1.1.0 accompanied the first revision.
 Release 1.0.0 accompanied the original submission; see `CHANGELOG.md` for the
 correction to the transient-threshold search and other changes.
 
@@ -13,7 +13,8 @@ correction to the transient-threshold search and other changes.
 
 | Version | Use | DOI |
 |---|---|---|
-| 1.1.0 | revised manuscript | **10.5281/zenodo.21807873** (version DOI) |
+| 1.1.1 | second-round revision | **10.5281/zenodo.24544518** (version DOI) |
+| 1.1.0 | first revision | 10.5281/zenodo.21807873 |
 | 1.0.0 | original submission | 10.5281/zenodo.21807502 |
 
 ## Environment
@@ -42,16 +43,21 @@ python -m pip install -r requirements.txt
 | 10 | `python robustness.py oat` and `python robustness.py Bcurve` | `results/robustness_*.json` | 30 min each |
 | 11 | `python dimensional_sensitivity.py` | `results/dimensional_sensitivity.json` | 1 min |
 | 12 | `python england_empirical_analysis.py` | `results/england_empirical_results.json`, `fig_england_empirical.pdf` | <1 min |
-| 13 | `python make_revision_figures.py` and `python make_nd_figures.py` | all manuscript figures | 5 min |
+| 13 | `python near_threshold_ratio.py` | `results/near_threshold_ratio.json` | 20 min |
+| 14 | `python tail_validation.py` | `results/tail_validation.json` | 60-90 min |
+| 15 | `python make_revision_figures.py` and `python make_nd_figures.py` | all manuscript figures | 5 min |
 
 Steps 6-7 need the outputs of step 6 before step 7.
 
 ## What each check establishes
 
 - **Transient threshold** (`thresholds.py`): b_trans is a supremum over an
-  infinite horizon. It is computed on doubled horizons until a modal tail
-  certificate shows that no later maximum can exceed the one found, and the
-  ordering b_trans >= b_crit (Theorem 7.1) is asserted automatically.
+  infinite horizon. It is computed on doubled horizons until a linearised
+  tail criterion indicates that no later maximum can exceed the one found
+  (a numerical stopping rule, not a rigorous proof), and the ordering
+  b_trans >= b_crit (Theorem 7.1) is asserted automatically.
+  `tail_validation.py` checks every atlas point independently by extending
+  the horizon eightfold at a tighter tolerance.
 - **Folds of periodic orbits**: primary single shooting (`fixed_b_cycle.py`,
   `amplitude_custom.py`, `qmax_continuation.py`), independent collocation
   pseudo-arclength continuation (`collocation_folds.py`,
@@ -83,4 +89,4 @@ The code is released under the MIT License. The processed NHS England data remai
 
 Ibrahim, M., Alhassan, B., Ibrahim, S., Ibrahim, S. (2026). *Hospital-Overload Bifurcations:
 Reproducible Code and Data for a Capacity-Limited Piecewise-Smooth Epidemic Model*
-(Version 1.1.0). Zenodo. https://doi.org/10.5281/zenodo.21807873
+(Version 1.1.1). Zenodo. https://doi.org/10.5281/zenodo.24544518
